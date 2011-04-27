@@ -1,6 +1,7 @@
 source 'http://rubygems.org'
 
 gem 'rails', '3.0.6'
-gem "omniauth"
+gem "omniauth", :git => "git://github.com/cbetta/omniauth.git", :branch => "dependencyfix"
 gem "sqlite3-ruby"
-gem "gowalla"
+gem "gowalla", "0.5.6"
+gem "superfeedee"

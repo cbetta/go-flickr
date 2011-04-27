@@ -5,9 +5,11 @@ class Authentication < ActiveRecord::Base
     create! do |authentication|
       authentication.provider = auth["provider"]
       authentication.uid = auth["uid"]
-      authentication.user = User.new
-      authentication.user.name = auth["user_info"]["name"]
-      authentication.user.save
+      if authentication.user.nil?
+        authentication.user = User.new
+        authentication.user.name = auth["user_info"]["name"]
+        authentication.user.save
+      end
       authentication.save
     end
   end

@@ -1,5 +1,12 @@
-Hello <%= current_user.name if current_user  %>!
 
 
-<%= link_to "Login as with Gowalla", "/auth/gowalla" unless current_user %>
-<%= link_to "Log out", logout_path if current_user %>
+<% if logged_in? %>
+	<%= link_to image_tag("http://static.gowalla.com/gowalla-connect-buttons/button-gowalla_connect-156ool.png"), "/auth/gowalla"%>
+<% else %>
+	Hello <%= current_user.name if current_user  %>! <br/>
+	<%= link_to "Log out", logout_path %> <br/> <br/>
+	
+	<% if current_user.flickr.nil? %>
+		<%= link_to "Link up with Flickr", "/auth/flickr" %>
+	<% end %>
+<% end %>

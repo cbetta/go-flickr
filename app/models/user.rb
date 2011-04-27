@@ -4,4 +4,8 @@ class User < ActiveRecord::Base
   def gowalla
     self.authentications.where(:provider => "gowalla").first
   end
+  
+  def flickr
+    self.authentications.where(:provider => "flickr").first
+  end
 end
