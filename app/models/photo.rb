@@ -1,4 +1,5 @@
 require 'net/http'
+require "heroku"
 
 class Photo < ActiveRecord::Base
   belongs_to :user
