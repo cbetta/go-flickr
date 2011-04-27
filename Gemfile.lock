@@ -1,4 +1,15 @@
 GIT
+  remote: git://github.com/cbetta/gowalla.git
+  revision: 1e37a9bf469f89ff0271735b238f30924251640a
+  branch: ssl_fix
+  specs:
+    gowalla (0.5.6)
+      faraday (~> 0.6)
+      faraday_middleware (~> 0.6)
+      hashie (~> 1.0.0)
+      oauth2 (~> 0.4)
+
+GIT
   remote: git://github.com/cbetta/omniauth.git
   revision: 294a533831f86e9008319de92ed2887402512acb
   branch: dependencyfix
@@ -89,11 +100,6 @@ GEM
       faraday (~> 0.6.0)
     flickraw (0.8.4)
       json (>= 1.1.1)
-    gowalla (0.5.6)
-      faraday (~> 0.6)
-      faraday_middleware (~> 0.6)
-      hashie (~> 1.0.0)
-      oauth2 (~> 0.4)
     hashie (1.0.0)
     heroku (1.20.1)
       launchy (~> 0.3.2)
@@ -162,7 +168,7 @@ DEPENDENCIES
   delayed_job
   domainatrix
   flickraw
-  gowalla (= 0.5.6)
+  gowalla!
   heroku
   omniauth!
   rails (= 3.0.6)
