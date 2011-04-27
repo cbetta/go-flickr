@@ -3,7 +3,6 @@ require "openssl"
 class SessionsController < ApplicationController
   
   def create
-    OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE
     # get the omniauth hash
     auth = request.env["omniauth.auth"]
     # if the provider is gowalla, log the user in
