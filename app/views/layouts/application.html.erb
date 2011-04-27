@@ -7,6 +7,13 @@
   <%= csrf_meta_tag %>
 </head>
 <body>
+	
+
+	<% for name in [:notice, :warning, :message]  %>
+	  <% if flash[name] %>
+	    <div id="<%= name %>"><%= flash[name] %></div>
+	  <% end %>
+	<% end %>
 
 <%= yield %>
 
