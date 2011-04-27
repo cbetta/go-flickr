@@ -26,4 +26,5 @@ class User < ActiveRecord::Base
     end
     Delayed::Job.count
   end
+
 end
