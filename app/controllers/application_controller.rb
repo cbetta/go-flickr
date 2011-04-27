@@ -16,10 +16,6 @@ class ApplicationController < ActionController::Base
   end
   
   def gowalla
-    Gowalla::Client.new ({
-      :api_key     => ENV['GWPHOTOS_GOWALLA_KEY'],
-      :api_secret  => ENV['GWPHOTOS_GOWALLA_SECRET'],
-      :access_token => current_user.nil? ? current_user.gowalla.access_token : nil
-    })
+    current_user.gowalla
   end
 end

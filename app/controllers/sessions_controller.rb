@@ -5,13 +5,15 @@ class SessionsController < ApplicationController
     auth = request.env["omniauth.auth"]
     # if the provider is gowalla, log the user in
     if auth["provider"] == 'gowalla'
-      authentication = Authentication.find_by_provider_and_uid(auth["provider"], auth["uid"]) || Authentication.create_with_omniauth(auth)
+      authentication = Authentication.find_by_provider_and_uid(auth["provider"], auth["uid"], nil) || Authentication.create_with_omniauth(auth, nil)
       authentication.access_token = auth['credentials']['token']
       authentication.username = auth['user_info']['nickname']
       authentication.save 
     # if it's flickr and the user is logged in, bind flickr
     elsif auth["provider"] == 'flickr' && !current_user.nil?
-      authentication = current_user.authentications.find_by_provider_and_uid(auth["provider"], auth["uid"]) || Authentication.create_with_omniauth(auth)
+      authentication =  Authentication.find_by_provider_and_uid(auth["provider"], auth["uid"]) || Authentication.create_with_omniauth(auth, current_user)
+      authentication.access_token = auth['credentials']['token']
+      authentication.save
     else
       redirect_to root_url, :notice => "Oops. Something went wrong"
     end
