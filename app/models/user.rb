@@ -15,8 +15,15 @@ class User < ActiveRecord::Base
       p = Photo.find_or_create_by_url(photo.photo_urls.high_res_320x480)
       p.user = self
       p.save
-      p.delay.upload
+      p.delay.upload(photo.spot)
     end
     nil
+  end
+  
+  def self.update_all_photos
+    User.all.each do |user|
+      user.delay.update_photos
+    end
+    Delayed::Job.count
   end
 end

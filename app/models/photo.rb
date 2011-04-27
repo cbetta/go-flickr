@@ -6,7 +6,7 @@ class Photo < ActiveRecord::Base
   # 
   # Uploads the photos to flickr and marks the model as uploaded
   # 
-  def upload
+  def upload(spot)
     # config flickr raw
     FlickRaw.api_key=ENV['GWPHOTOS_FLICKR_KEY']
     FlickRaw.shared_secret=ENV['GWPHOTOS_FLICKR_SECRET']
@@ -23,7 +23,7 @@ class Photo < ActiveRecord::Base
     }
     
     # upload the file from tmp folder
-    flickr.upload_photo temp_filename
+    flickr.upload_photo temp_filename, :title => spot.name, :description => "Shared on Gowalla: http://gowalla.com/#{spot.url}"
     
     # set the upload to true
     uploaded = true
