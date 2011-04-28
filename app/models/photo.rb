@@ -27,8 +27,8 @@ class Photo < ActiveRecord::Base
     flickr.upload_photo temp_filename, :title => spot.name, :description => "Shared on Gowalla: http://gowalla.com/#{spot.url}"
     
     # set the upload to true
-    uploaded = true
-    save
+    self.uploaded = true
+    self.save
     
     #delete the file
     File.delete(temp_filename)
