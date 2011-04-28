@@ -27,7 +27,7 @@ class User < ActiveRecord::Base
       user.delay.update_photos
     end
     client = Heroku::Client.new(ENV['HEROKU_USER'], ENV['HEROKU_PASSWORD'])
-    client.set_workers(ENV['HEROKU_APP'], 0)
+    client.set_workers(ENV['HEROKU_APP'], 1)
     Delayed::Job.count
   end
 
