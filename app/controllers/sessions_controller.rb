@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
       authentication.access_token = auth['credentials']['token']
       authentication.username = auth['user_info']['nickname']
       authentication.save 
-      session[:user_id] = authentication.user.id
+      session[:user_id] = authentication.uid
       redirect_to root_url, :notice => "Signed in!"
     # if it's flickr and the user is logged in, bind flickr
     elsif auth["provider"] == 'flickr' && !current_user.nil?
