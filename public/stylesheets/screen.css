@@ -1,0 +1,91 @@
+html {
+	background-color: #eee;
+}
+
+body {
+	font-family: 'Droid Sans', arial, serif;
+	width: 400px;
+	margin: 0px auto;
+	padding: 0px 0px 10px 0px;
+	box-shadow: 1px 1px 10px #555;
+	-moz-box-shadow: 1px 1px 10px #555;
+	-webkit-box-shadow: 1px 1px 10px #555;
+	background-color: #fff;
+	border-radius: 0px 0px 10px 10px;
+	-webkit-border-radius: 0px 0px 10px 10px;
+	-moz-border-radius: 0px 0px 10px 10px;
+}
+
+h1, h2 {
+	text-align: center;
+	background-color: #ffb900;
+}
+
+h1 { 
+	font-size: 30px;
+	color: #984A00;
+	padding: 10px 0px 0px 0px;
+	text-shadow: 1px 1px 1px #fff;
+	-moz-text-shadow: 1px 1px 1px #fff;
+	-webkit-text-shadow: 1px 1px 1px #fff;
+	font-family: 'Droid Serif', arial, serif; 
+}
+
+h2 {
+	font-size: 15px;
+	color: #984A00;
+	padding: 10px 0px;
+	border-bottom: 1px solid #984A00;
+	text-shadow: 1px 1px 1px #fff;
+	-moz-text-shadow: 1px 1px 1px #fff;
+	-webkit-text-shadow: 1px 1px 1px #fff;
+}
+
+h3 {
+	text-align: center;
+	color: #444;
+	text-shadow: 1px 1px 1px #fff;
+	-moz-text-shadow: 1px 1px 1px #fff;
+	-webkit-text-shadow: 1px 1px 1px #fff;
+	border-bottom: 1px dotted #888;
+	width: 200px;
+	margin: 0px auto;
+	padding: 0px 0px 10px 0px;
+}
+
+p {
+	font-size: 12px;
+	color: #333;
+	padding: 10px;
+	line-height: 16px;
+}
+
+p.centered {
+	text-align: center;
+}
+
+p.disabled {
+	color: #888;
+	font-weight: bold;
+}
+
+p a {
+	color: #984A00;
+}
+
+p a:hover {
+	opacity: 0.8;
+	-moz-opacity: 0.8;
+	filter:alpha(opacity=80);
+}
+
+.flash {
+	padding: 5px 10px;
+	background-color: #DDD;
+	font-size: 14px;
+	border-bottom: 1px solid #AAA;
+}
+
+p.righted {
+	text-align: right;
+}

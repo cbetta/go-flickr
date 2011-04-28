@@ -1,10 +1,28 @@
-<% if logged_in? %>
-	<%= link_to image_tag("http://static.gowalla.com/gowalla-connect-buttons/button-gowalla_connect-156ool.png"), "/auth/gowalla"%>
+<% if !logged_in? %>
+	<p>GoFlickr is a simple tool for <strong>automatically</strong> having your photos exported from <strong>Gowalla</strong> to <strong>Flickr</strong>. <strong>Once an hour</strong> we will check your account for new photos and upload them for you to your own Flickr account.</p>
+	<h3>Step 1</h3>
+	<p class='centered'><%= link_to image_tag("button-gowalla_connect-156ool.png"), "/auth/gowalla" %></p>
+	<h3>Step 2</h3>
+	<p class='centered disabled'>Connect with Flickr</p>
+<% elsif current_user.flickr.nil?  %>
+	<p>GoFlickr is a simple tool for <strong>automatically</strong> having your photos exported from <strong>Gowalla</strong> to <strong>Flickr</strong>. <strong>Once an hour</strong> we will check your account for new photos and upload them for you to your own Flickr account.</p>
+	<h3>Step 1 complete</h3>
+	<p class='centered'>You are connected with Gowalla</p>
+	<h3>Step 2</h3>
+	<p class='centered'><%= link_to image_tag("button-flickr.png"), "/auth/flickr" %></p>
 <% else %>
-	Hello <%= current_user.name if current_user  %>! <br/>
-	<%= link_to "Log out", logout_path %> <br/> <br/>
-	
-	<% if current_user.flickr.nil? %>
-		<%= link_to "Link up with Flickr", "/auth/flickr" %>
-	<% end %>
+	<p></p>
+	<h3>That's it!</h3>
+	<p>You are now all set up. If this is your first time connecting, we have started to directly import your photos now! Any other photos you take in the future will be uploaded every hour.
+<% end %>
+
+<% if logged_in? %>
+	<p class='righted'>
+		<%= link_to "Made by Cristiano Betta", "http://cristianobetta.com" %> |
+		<%= link_to "Log out", logout_path %>
+	</p>
+<% else %>
+	<p class='righted'>
+		<%= link_to "Made by Cristiano Betta", "http://cristianobetta.com" %>
+	</p>
 <% end %>
