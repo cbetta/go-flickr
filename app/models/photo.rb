@@ -39,8 +39,7 @@ class Photo < ActiveRecord::Base
   def throttle_heroku
     if Rails.env.production?
       client = Heroku::Client.new(ENV['HEROKU_USER'], ENV['HEROKU_PASSWORD'])
-      current = client.info(ENV['HEROKU_APP'])[:workers].to_i
-      jobs_count = Delayed::Job.count
+      jobs_count = Photo.where(:uploaded => false).count
       
       if (jobs_count == 0)
         client.set_workers(ENV['HEROKU_APP'], 0) 
