@@ -8,7 +8,12 @@ class ApplicationController < ActionController::Base
   private
 
   def current_user
-    User.find(session[:user_id]) if session[:user_id]
+    if session[:user_id]
+      authentication = Authentication.find_by_provider_and_uid("gowalla", session[:user_id]) 
+      authentication.nil? ? nil : authentication.user
+    else
+      nil
+    end
   end
   
   def logged_in?
