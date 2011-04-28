@@ -1,3 +1,5 @@
+require "heroku"
+
 class User < ActiveRecord::Base
   has_many :authentications
   has_many :photos
@@ -24,6 +26,8 @@ class User < ActiveRecord::Base
     User.all.each do |user|
       user.delay.update_photos
     end
+    client = Heroku::Client.new(ENV['HEROKU_USER'], ENV['HEROKU_PASSWORD'])
+    client.set_workers(ENV['HEROKU_APP'], 0)
     Delayed::Job.count
   end
 
