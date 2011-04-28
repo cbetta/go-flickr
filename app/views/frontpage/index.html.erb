@@ -16,15 +16,11 @@
 	<p>You are now all set up. If this is your first time connecting, we have started to directly import your photos now! Any other photos you take in the future will be uploaded every hour.
 <% end %>
 
-<% if logged_in? %>
-	<p class='righted'>
-		<%= link_to "Made by Cristiano Betta", "http://cristianobetta.com" %> |
-		<%= link_to "@cbetta", "http://twitter.com/cbetta" %> |
-		<%= link_to "Log out", logout_path %>
-	</p>
-<% else %>
-	<p class='righted'>
-		<%= link_to "Made by Cristiano Betta", "http://cristianobetta.com" %> |
-		<%= link_to "@cbetta", "http://twitter.com/cbetta" %>
-	</p>
-<% end %>
+<p class='righted'>
+	<%= link_to "Made by Cristiano Betta", "http://cristianobetta.com" %> |
+	<%= link_to "@cbetta", "http://twitter.com/cbetta" %> |
+	<%= link_to "Source", "https://github.com/cbetta/GoFlickr" %>
+	<% if logged_in? %>
+	 | <%= link_to "Log out", logout_path %>
+	<% end%>
+</p>
