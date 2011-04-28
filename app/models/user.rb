@@ -17,7 +17,7 @@ class User < ActiveRecord::Base
       p = Photo.find_or_create_by_url(photo.photo_urls.high_res_320x480)
       p.user = self
       p.save
-      p.delay.upload(photo.spot)
+      p.delay.upload(photo.spot) unless p.uploaded 
     end
     nil
   end
