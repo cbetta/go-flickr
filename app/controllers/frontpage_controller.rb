@@ -23,7 +23,10 @@ class FrontpageController < ApplicationController
   #  Processes the backlog of a user on demand
   #
   def process_backlog
-    current_user.delay.update_photos
+    user = current_user
+    user.delay.update_photos
+    user.backlog_processed = true
+    user.save
     redirect_to root_url, :notice => "Your current Gowalla photos are now being uploaded"
   end
 end
