@@ -15,7 +15,7 @@ class Photo < ActiveRecord::Base
       flickr.auth.checkToken :auth_token => self.user.flickr.access_token
     
       # save the file temprarily locally
-      temp_filename = "#{Rails.root}/tmp/photo_#{self.id}.img"
+      temp_filename = "#{Rails.root}/tmp/go_flickr_photo_#{self.id}.img"
       uri = Domainatrix.parse(self.url)
       Net::HTTP.start("static.gowalla.com") { |http|
         resp = http.get(uri.path)
@@ -25,7 +25,7 @@ class Photo < ActiveRecord::Base
       }
     
       # upload the file from tmp folder
-      flickr.upload_photo temp_filename, :title => spot.name, :description => "Shared on Gowalla: http://gowalla.com/#{spot.url}"
+      flickr.upload_photo temp_filename, :title => spot.name, :description => "Shared on Gowalla: http://gowalla.com/#{spot.url}", :tags => 'gowalla'
     
       # set the upload to true
       self.uploaded = true
