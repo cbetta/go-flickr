@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110427204112) do
+ActiveRecord::Schema.define(:version => 20110503230210) do
 
   create_table "authentications", :force => true do |t|
     t.string   "provider"
@@ -43,13 +43,16 @@ ActiveRecord::Schema.define(:version => 20110427204112) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "processed",  :default => false
   end
 
   create_table "users", :force => true do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "fully_authorised", :default => false
+    t.boolean  "fully_authorised",  :default => false
+    t.boolean  "backlog_processed", :default => false
+    t.boolean  "disabled",          :default => false
   end
 
 end

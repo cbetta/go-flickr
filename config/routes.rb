@@ -1,6 +1,8 @@
 Gwphotos::Application.routes.draw do
   match "/auth/:provider/callback" => "sessions#create"
   match "/auth/failure" => "sessions#failure"
+  match "/disable" => "frontpage#disable"
+  match "/process_backlog" => "frontpage#process_backlog"
   match "/signout" => "sessions#destroy", :as => :logout
   
   root :to => "frontpage#index"

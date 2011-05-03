@@ -21,7 +21,6 @@ class SessionsController < ApplicationController
       authentication.save
       authentication.user.fully_authorised = true
       authentication.user.save
-      authentication.user.delay.update_photos
       if Rails.env.production?
         client = Heroku::Client.new(ENV['HEROKU_USER'], ENV['HEROKU_PASSWORD'])
         client.set_workers(ENV['HEROKU_APP'], 1)
