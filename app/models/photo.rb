@@ -26,7 +26,7 @@ class Photo < ActiveRecord::Base
     
       # upload the file from tmp folder
       # spot_data = gowalla.api.spot(spot.url.split("/").last)
-      flickr.upload_photo temp_filename, :title => spot.name, :description => "Shared on Gowalla: http://gowalla.com/#{spot.url}", :tags => 'gowalla'
+      flickr.upload_photo temp_filename, :title => spot.name, :description => "Shared on Gowalla: http://gowalla.com#{spot.url}", :tags => 'gowalla'
     
       # set the upload to true
       self.uploaded = true
